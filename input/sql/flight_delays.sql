@@ -155,7 +155,7 @@ INTO TABLE temp_longitude
 CREATE TABLE IF NOT EXISTS temp_airline (
   airline_id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
   iata_code CHAR(3) NOT NULL,
-  airline_name VARCHAR(55) NOT NULL,
+  airline_name VARCHAR(100) NOT NULL,
   PRIMARY KEY (airline_id)
 )
   ENGINE=InnoDB
@@ -170,3 +170,37 @@ CREATE TABLE IF NOT EXISTS temp_airline (
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES
     (iata_code, airline_name);
+
+CREATE TABLE IF NOT EXISTS airport (
+  airport_id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+  iata_code CHAR(3) NOT NULL,
+  airport_name VARCHAR(255) NOT NULL,
+  city VARCHAR(45) NOT NULL,
+  state CHAR(2) NOT NULL,
+  country CHAR(3) NOT NULL,
+  latitude VARCHAR(50) NOT NULL,
+  longitude VARCHAR(50) NOT NULL,
+  PRIMARY KEY (airport_id)
+)
+  ENGINE=InnoDB
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_0900_ai_ci;
+
+  LOAD DATA LOCAL INFILE './input/csv/airports.csv'
+  INTO TABLE airport
+  CHARACTER SET utf8mb4
+  FIELDS TERMINATED BY ','
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES
+  (iata_code, airport_name, city, state, country, latitude, longitude);
+
+-- INSERT IGNORE INTO airport (
+--   iata_code,
+--   airport_name,
+--   city,
+--   state,
+--   country,
+--   latitude,
+--   longitude,
+-- )
