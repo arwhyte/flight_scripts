@@ -1,0 +1,7 @@
+mysql:
+  host: localhost
+  port: 3306
+  user: laurensheridan
+  passwd: Yodadoda1986
+  db: flightdelays
+  local_infile: True
