@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS airport, flight, airline, aircraft, temp_airport, temp_iatacode, temp_airportname, temp_city, temp_state, temp_latitude, temp_longitude;
+DROP TABLE IF EXISTS airport, flight, airline, aircraft, temp_airport, temp_airline, temp_iatacode, temp_airportname, temp_city, temp_state, temp_latitude, temp_longitude;
 SET FOREIGN_KEY_CHECKS=1;
 
 CREATE TABLE IF NOT EXISTS temp_airport (
@@ -151,3 +151,22 @@ INTO TABLE temp_longitude
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES
   (@dummy, @dummy, @dummy, @dummy, @dummy, @dummy, longitude_name);
+
+CREATE TABLE IF NOT EXISTS temp_airline (
+  airline_id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+  iata_code CHAR(3) NOT NULL,
+  airline_name VARCHAR(55) NOT NULL,
+  PRIMARY KEY (airline_id)
+)
+  ENGINE=InnoDB
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_0900_ai_ci;
+
+  LOAD DATA LOCAL INFILE './input/csv/airlines.csv'
+  INTO TABLE temp_airline
+    CHARACTER SET utf8mb4
+    FIELDS TERMINATED BY ','
+    ENCLOSED BY '"'
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES
+    (iata_code, airline_name);
