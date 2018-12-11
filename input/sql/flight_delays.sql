@@ -229,9 +229,9 @@ airline_name,
 airline_iata_code_id
 )
 
---
--- SELECT ta.airline_id, ta.airline_name, ta.airline_iata_id
---   FROM temp_airline ta
---        LEFT JOIN airline_iata ai
---               ON TRIM(ta.airline_name) = TRIM(ai.airline_name)
--- ORDER BY th.hospital_provider_identifier;
+
+SELECT ta.airline_id, ta.airline_name, ta.airline_iata_id
+  FROM temp_airline ta
+       LEFT JOIN airline_iata ai
+              ON TRIM(ta.airline_name) = TRIM(ai.airline_name)
+ORDER BY ta.airline_name;
