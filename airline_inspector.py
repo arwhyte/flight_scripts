@@ -28,24 +28,24 @@ def main(argv=None):
 	logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
 	# Read in source
-	source_path = os.path.join('input', 'csv', 'airlines.csv')
+	source_path = os.path.join('input', 'csv', 'aircrafts.csv')
 	source_data_frame = read_csv(source_path, ',')
 	source_data_frame_trimmed = trim_columns(source_data_frame)
-	source_trimmed_csv = os.path.join('output', 'airlines', 'airlines_trimmed.csv')
+	source_trimmed_csv = os.path.join('output', 'airlines', 'aircrafts_trimmed.csv')
 	write_series_to_csv(source_data_frame_trimmed, source_trimmed_csv, ',', False)
 	logging.info(msg[0].format(os.path.abspath(source_trimmed_csv)))
 
-	source_path = os.path.join('input', 'csv', 'airports.csv')
+	source_path = os.path.join('input', 'csv', 'aircrafts.csv')
 	source_data_frame = read_csv(source_path, ',')
 	source_data_frame_trimmed = trim_columns(source_data_frame)
-	source_trimmed_csv = os.path.join('output', 'airports', 'airports_trimmed.csv')
+	source_trimmed_csv = os.path.join('output', 'airlines', 'aircrafts_trimmed.csv')
 	write_series_to_csv(source_data_frame_trimmed, source_trimmed_csv, ',', False)
 	logging.info(msg[0].format(os.path.abspath(source_trimmed_csv)))
 
-	source_path = os.path.join('input', 'csv', 'flights.csv')
+	source_path = os.path.join('input', 'csv', 'aircrafts.csv')
 	source_data_frame = read_csv(source_path, ',')
 	source_data_frame_trimmed = trim_columns(source_data_frame)
-	source_trimmed_csv = os.path.join('output', 'flights', 'flights_trimmed.csv')
+	source_trimmed_csv = os.path.join('output', 'airlines', 'aircrafts_trimmed.csv')
 	write_series_to_csv(source_data_frame_trimmed, source_trimmed_csv, ',', False)
 	logging.info(msg[0].format(os.path.abspath(source_trimmed_csv)))
 
