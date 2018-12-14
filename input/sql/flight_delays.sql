@@ -132,8 +132,28 @@ CREATE TABLE IF NOT EXISTS flight (
   time_day INTEGER NOT NULL,
   day_of_week INTEGER NOT NULL,
   airline_id INTEGER NOT NULL,
+  aircraft_id INTEGER NOT NULL,
+  flight_number INTEGER NOT NULL,
+  scheduled_departure INTEGER NOT NULL,
+  departure_time VARCHAR(50) NOT NULL,
+  departure_delay VARCHAR(50) NOT NULL,
+  taxi_out VARCHAR(50) NOT NULL,
+  wheels_off VARCHAR(50) NOT NULL,
+  scheduled_time VARCHAR(50) NOT NULL,
+  elapsed_time VARCHAR(50) NOT NULL,
+  air_time VARCHAR(50) NOT NULL,
+  distance INTEGER NOT NULL,
+  wheels_on VARCHAR(50) NOT NULL,
+  taxi_in VARCHAR(50) NOT NULL,
+  scheduled_arrival INTEGER NOT NULL,
+  arrival_time VARCHAR(50) NOT NULL,
+  arrival_delay VARCHAR(50) NOT NULL,
+  diverted INTEGER NOT NULL,
+  cancelled INTEGER NOT NULL,
   PRIMARY KEY (flight_id),
   FOREIGN KEY (airline_id) REFERENCES airline(airline_id)
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (aircraft_id) REFERENCES aircraft(aircraft_id)
   ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE=InnoDB
